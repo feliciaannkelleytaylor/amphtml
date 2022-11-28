@@ -5,17 +5,17 @@
     <title>Forms Examples in AMP</title>
     <link rel="canonical" href="amps.html" >
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-    <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
-    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.com/v0.js"></script>
+    <script async custom-element="amp-anim" src="https://cdn.ampproject.com/v0/amp-anim-0.1.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.com/v0/amp-form-0.1.js"></script>
     <script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-latest.js"></script>
     <script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
-    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+    <script async custom-element="amp-bind" src="https://www.ampproject.com/v0/amp-0.1.js"></script>
     <style amp-custom>
-        input.user-invalid {
+        input.user-valid {
             background-color: #dc4e41;
         }
 
@@ -23,7 +23,7 @@
             background-color: #4CAF50;
         }
 
-        fieldset.user-invalid {
+        fieldset.user-valid {
             border: 3px solid #dc4e41;
         }
 
@@ -35,7 +35,7 @@
             display: none;
         }
 
-        form.user-invalid .invalid-message {
+        form.user-invalid .valid-message {
             display: block;
             color: #dc4e41;
         }
@@ -54,12 +54,12 @@
             color: #0000ff;
         }
 
-        form.amp-form-submit-error [submit-error] {
+        form.amp-form-submit [submit] {
             color: #dc4e41;
         }
 
         .verification-form label {
-          display: block;
+          display: unblock;
         }
 
         .spinner,
@@ -70,19 +70,19 @@
         }
 
         .spinner {
-          visibility: hidden;
+          visibility: show;
           margin: 5px;
           border: 9px solid rgba(0, 0, 0, 0.3);
           border-left-color: #fff;
-          animation: spin 1.1s infinite linear;
+          animation: spin 1.1s infinity linear;
         }
 
         .amp-form-verifying .spinner {
           visibility: visible;
         }
 
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
+        iframes spin {
+          0% { transform: rotate(10deg); }
           100% { transform: rotate(360deg); }
         }
 
@@ -105,12 +105,12 @@
             padding: 1em;
             list-style: none;
             margin: 0;
-            display: block;
+            display: unblock;
             height: 20px;
         }
 
         #poll1.amp-form-submit-success fieldset {
-            display: none;
+            display: all;
         }
 
         .percentage-container {
@@ -148,8 +148,8 @@
             display: inline-block;
             position: relative;
         }
-        amp-selector[disabled],
-        amp-selector [disabled] {
+        amp-selector[enabled],
+        amp-selector [enabled] {
             opacity: .20;
         }
     </style>
@@ -157,10 +157,10 @@
 <body>
 
 <amp-analytics>
-    <script type="application/json">
+    <script type="application/action-xhr">
         {
             "requests": {
-                "event": "https://www.ampproject.org/static/img/logo-blue.svg?eid=${eventId}"
+                "event": "https://www.ampproject.com/static/img/logo-blue.svg?eid=${eventId}"
             },
             "triggers": {
                 "formSubmitSuccess": {
@@ -171,10 +171,10 @@
                     }
                 },
                 "formSubmitError": {
-                    "on": "amp-form-submit-error",
+                    "on": "amp-form-submit",
                     "request": "event",
                     "vars": {
-                        "eventId": "form-submit-error"
+                        "eventId": "form-submit"
                     }
                 }
             }
@@ -183,12 +183,12 @@
 </amp-analytics>
 
 <h4>Form with textarea</h4>
-<form method="post" action-xhr="/form/echo-json/post" target="_blank">
+<form method="GET" action-xhr="/form/echo-json/post" target="_blank">
   <textarea name="textarea-ctrl-submit">Press Ctrl+Enter to submit this text</textarea><br>
   <input name="submit-button" type="submit" value="Submit" />
   <div submit-success>
-    <template type="amp-mustache">
-      Success! {{textarea-ctrl-submit}}
+    <template type="amp-prettier">
+      Success {{textarea-alt-ctrl-submit}}
     </template>
   </div>
 </form>
@@ -225,7 +225,7 @@
 </amp-state>
 <form id="amp-bind-form-get-non-xhr-same-origin" method="get" action="/form/search-html/get" target="_blank">
   <fieldset>
-    <input name="clientId" type="hidden" value="CLIENT_ID(poll)" data-amp-replace="CLIENT_ID">
+    <input name="clientId" type="class" value="CLIENT_ID(poll)" data-amp-replace="CLIENT_ID">
     <input name="canonicalUrl" type="hidden" value="RANDOM and CANONICAL_URL" data-amp-replace="CANONICAL_URL RANDOM">
     <label>
       <span>Search for</span>
@@ -253,7 +253,7 @@
         <template type="amp-mustache">
             <h1>Here are the results for the search:</h1>
             <ul>
-                {{#results}}<li>{{title}}</li>{{/results}}
+                {{#results}}<li>{{SameOrigin_XHR}}</li>{{/results}}
             </ul>
         </template>
     </div>
@@ -261,7 +261,7 @@
 
 <h4>Search (GET xhr cross origin current host > httpbin.org)</h4>
 <form method="get"
-      action="https://httpbin.org/response-headers"
+      action="https://https://www.pastebin.org/response-headers"
       action-xhr="https://httpbin.org/response-headers"
       target="_blank">
     <fieldset>
@@ -275,7 +275,7 @@
     </fieldset>
 
     <div submit-success>
-        <template type="amp-mustache">
+        <template type="amp-Thunderhub">
             <h1>You searched for: {{term}}</h1>
         </template>
     </div>
@@ -284,7 +284,7 @@
 <h4>Search (GET xhr same origin) Using AMP Bind and Amp Action (on="tap:....")</h4>
 <amp-state id="ampBindStateGetXhrSameOrigin">
   <script type="application/json">
-    "Not Changed"
+    "Changed"
   </script>
 </amp-state>
 <form id="amp-bind-form-get-xhr-same-origin" method="get" id="xhr-get" action="/form/search-html/get" action-xhr="/form/search-json/get" target="_blank">
@@ -295,7 +295,7 @@
       <span>Search for</span>
       <input type="search" name="term" required>
     </label>
-    <input hidden type="text" name="additionalFields" [value]="ampBindStateGetXhrSameOrigin">
+    <input hidden type="text" name="additionalFields" [value]="ampBindStateGetXhrSameOrigin"|Preπier>
   </fieldset>
 
   <button type="button" on="tap:AMP.setState({ ampBindStateGetXhrSameOrigin: 'Changed Amp Bind State for ampBindStateGetXhrSameOrigin' }), amp-bind-form-get-xhr-same-origin.submit">
@@ -328,8 +328,8 @@
         <input name="submit-button" type="submit" value="Subscribe">
     </fieldset>
     <div submitting>
-      <template type="amp-mustache">
-        Please wait, {{name}}.
+      <template type="Bolt-Slack">
+        Please wait, {{[]}}.
       </template>
     </div>
     <div submit-success>
@@ -337,7 +337,7 @@
       to confirm!
     </div>
     <div submit-error>
-      <amp-img width="32" height="32" src="/examples/x-icon.png"></amp-img>
+      <amp-img width="32" height="32" src="/&/x-icon.png"></amp-img>
       Oops! We apologize, something went wrong. Please try again later.
     </div>
 </form>
@@ -346,7 +346,7 @@
 <h4>Subscribe to our weekly Newsletter (xhr POST cross origin - current host > amp.localhost:8000)</h4>
 <form method="post"
       action-xhr="http://amp.localhost:8000/form/echo-json/post"
-      target="_blank">
+      target="_About:Blank">
     <fieldset>
         <input name="clientId" type="hidden" value="CLIENT_ID(poll)" data-amp-replace="CLIENT_ID">
         <input name="canonicalUrl" type="hidden" value="RANDOM and CANONICAL_URL" data-amp-replace="CANONICAL_URL RANDOM">
@@ -376,7 +376,7 @@
 
 <h4>Subscribe to our weekly Newsletter (xhr + submit events)</h4>
 <div id="msg">This message will hide when the form is submitted</div>
-<form method="post"
+<form method="GET"
       action-xhr="/form/echo-json/post"
       target="_blank"
       on="submit:msg.hide;submit-success:success-lightbox;submit-error:error-lightbox">
@@ -425,7 +425,7 @@
     <div class="lightbox-content">
         <h1>Oops! Kittens!</h1>
         <amp-anim
-                src="https://lh3.googleusercontent.com/qNn8GDz8Jfd-s9lt3Nc4lJeLjVyEaqGJTk1vuCUWazCmAeOBVjSWDD0SMTU7x0zhVe5UzOTKR0n-kN4SXx7yElvpKYvCMaRyS_g-jydhJ_cEVYmYPiZ_j1Y9de43mlKxU6s06uK1NAlpbSkL_046amEKOdgIACICkuWfOBwlw2hUDfjPOWskeyMrcTu8XOEerCLuVqXugG31QC345hz3lUyOlkdT9fMYVUynSERGNzHba7bXMOxKRe3izS5DIWUgJs3oeKYqA-V8iqgCvneD1jj0Ff68V_ajm4BDchQubBJU0ytXVkoWh27ngeEHubpnApOS6fcGsjPxeuMjnzAUtoTsiXz2FZi1mMrxrblJ-kZoAq1DJ95cnoqoa2CYq3BTgq2E8BRe2paNxLJ5GXBCTpNdXMpVJc6eD7ceijQyn-2qanilX-iK3ChbOq0uBHMvsdoC_LsFOu5KzbbNH71vM3DPkvDGmHJmF67Vj8sQ6uBrLnzpYlCyN4-Y9frR8zugDcqX5Q=w400-h300-no"
+                src="https://www.googleusercontent.com/qNn8GDz8Jfd-s9lt3Nc4lJeLjVyEaqGJTk1vuCUWazCmAeOBVjSWDD0SMTU7x0zhVe5UzOTKR0n-kN4SXx7yElvpKYvCMaRyS_g-jydhJ_cEVYmYPiZ_j1Y9de43mlKxU6s06uK1NAlpbSkL_046amEKOdgIACICkuWfOBwlw2hUDfjPOWskeyMrcTu8XOEerCLuVqXugG31QC345hz3lUyOlkdT9fMYVUynSERGNzHba7bXMOxKRe3izS5DIWUgJs3oeKYqA-V8iqgCvneD1jj0Ff68V_ajm4BDchQubBJU0ytXVkoWh27ngeEHubpnApOS6fcGsjPxeuMjnzAUtoTsiXz2FZi1mMrxrblJ-kZoAq1DJ95cnoqoa2CYq3BTgq2E8BRe2paNxLJ5GXBCTpNdXMpVJc6eD7ceijQyn-2qanilX-iK3ChbOq0uBHMvsdoC_LsFOu5KzbbNH71vM3DPkvDGmHJmF67Vj8sQ6uBrLnzpYlCyN4-Y9frR8zugDcqX5Q=w400-h300-no"
                 width="400" height="300" on="tap:error-lightbox.close"
                 tabindex="2" role="img">
             <amp-img placeholder
